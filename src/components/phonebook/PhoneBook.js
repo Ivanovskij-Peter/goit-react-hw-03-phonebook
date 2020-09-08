@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Contacts from '../contacts/Contacts';
 import Filter from '../filter/Filter';
 import ContactsForm from '../contacts/ContactsForm';
+import ContactsItems from '../contacts/ContactsItems';
 
 class PhoneBook extends Component {
   state = {
@@ -39,6 +39,16 @@ class PhoneBook extends Component {
       contacts: prevState.contacts.filter(el => el.id !== id),
     }));
   };
+  // componentDidMount() {
+  //   const contacts = localStorage.getItem('contacts');
+  //   const parsedContacts = JSON.parse(contacts);
+  //   this.setState({ contacts: parsedContacts });
+  // }
+  // componentDidUpdate(prevPops, prevState) {
+  //   if (this.state.contacts !== prevState.contacts) {
+  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  //   }
+  // }
 
   render() {
     return (
@@ -47,8 +57,8 @@ class PhoneBook extends Component {
         <ContactsForm getContact={this.getContact} />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} getFilterName={this.getFilterName} />
-        <Contacts
-          contacts={this.filterItems()}
+        <ContactsItems
+          contactsItems={this.filterItems()}
           deleteContact={this.deleteContact}
         />
       </div>
