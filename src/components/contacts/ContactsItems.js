@@ -1,6 +1,7 @@
 import React from 'react';
 
 function ContactsItems({ contactsItems, deleteContact }) {
+  console.log(contactsItems);
   return (
     <ul>
       {contactsItems.map(el => (
